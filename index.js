@@ -73,7 +73,7 @@ app.get('/landing_page', function(req, res) {
 
 app.post('/login', 
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/dashboard',  // of user?
         failureRedirect: '/login',
         failureFlash: 'Invalid Username or Password',
         successFlash: 'Welcome!'}), 
@@ -91,6 +91,7 @@ app.post('/sign_up', function(req, res) {
 });
 
 app.get('/dashboard', function(req, res) {
+    // user data in req.user
     res.render('dashboard');
 });
 
