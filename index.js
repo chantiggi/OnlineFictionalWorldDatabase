@@ -22,21 +22,27 @@ passport.use(new LocalStrategy(
     }
 ));
 
+app.configure(function() {
+    app.use('/static', express.static('public'));
+    app.use(express.cookieParser());
+    app.use(bodyParser.urlencoded({extended:true}));
+    app.use(session({secret: "malazan"}));
+
+    // Initialize Passport and Sessions
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // Router
+    app.use(app.router);
+});
+
 // Set up handlebars view engine
-var handlebars = require('express-handlebars').create({ defaultLayout:'main' });
+var handlebars = require('express-handlebars').create({ defaultLayout:'main'});
 
 // Set Handlebars Engine
 app.engine('handlebars', handlebars.engine);
-app.use(bodyParser.urlencoded({extended:true}));
-app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
 
-// Sessions
-app.use(session({secret: "malazan"}));
-
-// Initialize Passport and Sessions
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Serialize
 passport.serializeUser(function(user, done) {
@@ -63,7 +69,7 @@ app.use('/logout', require('./public/logout.js'));
 // Web Pages
 app.get('/landing_page', function(req, res) {
     res.render('landing_page');
-})
+});
 
 app.post('/login', 
     passport.authenticate('local', {
