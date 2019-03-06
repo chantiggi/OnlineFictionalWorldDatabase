@@ -56,7 +56,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Set Port
-app.set('port', process.env.PORT || 6663);
+app.set('port', process.env.PORT || 3000);
 app.set('mysql', mysql);
 
 // Require Pages
@@ -76,23 +76,27 @@ app.post('/login',
         successRedirect: '/dashboard',  // of user?
         failureRedirect: '/login',
         failureFlash: 'Invalid Username or Password',
-        successFlash: 'Welcome!'}), 
-    function(req, res) {
-    res.render('login');
-});
+        successFlash: 'Welcome!'})//, 
+    //function(req, res) {
+    //res.render('login');
+    //}
+);
 
-app.get('/logout', function(req, res) {
+app.get('/logout', passport.authenticate('local'), function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/landing_page');
 });
 
 app.post('/sign_up', function(req, res) {
     res.render('sign_up');
 });
 
-app.get('/dashboard', function(req, res) {
+app.get('/dashboard', passport.authenticate('local'), function(req, res) {
     // user data in req.user
-    res.render('dashboard');
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('dashboard/users/' + req.user.username);
+    //res.render('dashboard');
 });
 
 // 404 catch-all handler (middleware)
