@@ -1,0 +1,27 @@
+{
+  "name": "onlinefictionalworlddatabase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GendronD/OnlineFictionalWorldDatabase.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GendronD/OnlineFictionalWorldDatabase/issues"
+  },
+  "homepage": "https://github.com/GendronD/OnlineFictionalWorldDatabase#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "express3-handlebars": "^0.5.2",
+    "handlebars": "^4.1.0",
+    "mysql": "^2.16.0"
+  }
+}
