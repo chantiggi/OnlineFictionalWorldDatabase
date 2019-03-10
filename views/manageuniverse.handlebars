@@ -1,0 +1,142 @@
+<h1>Manage Universe page</h1>
+
+<!--Only putting this here temporarily - will style later-->
+<style>
+    table {border:1px solid black; border-collapse:collapse;}
+    th {border:1px solid black; border-collapse:collapse;}
+    td {border:1px solid black; border-collapse:collapse;}
+</style>
+
+<div class="accordion" id="universeInfo">
+    <!--Chapters-->
+  <div class="card">
+    <div class="card-header" id="Chapters">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Chapters
+        </button>
+      </h2>
+    </div>
+    <div id="collapseOne" class="collapse" aria-labelledby="Chapters" data-parent="#universeInfo">
+      <div class="card-body">
+        Here is a list of all the chapters for this Universe.
+        <table>
+            <thead>
+                <tr>
+                    <th>Chapter #</th>
+                    <th>Title</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each chapters}}
+                <tr>
+                    <td>{{chapterNum}}</td>
+                    <td>{{chapterTitle}}</td>
+                    <td>{{chapterSummary}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+
+  <!--Events-->
+  <div class="card">
+    <div class="card-header" id="Events">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Events
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="Events" data-parent="#universeInfo">
+      <div class="card-body">
+        Here is a list of all the events for this Universe.
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each events}}
+                <tr>
+                    <td>{{eventName}}</td>
+                    <td>{{eventDescription}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<!--Locations-->
+  <div class="card">
+    <div class="card-header" id="Locations">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Locations
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="Locations" data-parent="#universeInfo">
+      <div class="card-body">
+        Here is a list of all locations for this Universe.
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each locations}}
+                <tr>
+                    <td>{{locName}}</td>
+                    <td>{{locDescription}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<!--Characters-->
+  <div class="card">
+    <div class="card-header" id="Characters">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Characters
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="Characters" data-parent="#universeInfo">
+      <div class="card-body">
+        Here is a list of all characters for this Universe.
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each characters}}
+                <tr>
+                    <td>{{charName}}</td>
+                    <td>{{description}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
