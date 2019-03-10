@@ -57,13 +57,13 @@ WHERE u.universeID = ?
 ORDER BY c.chapterNum
 
 -- get locations for specific universe
-SELECT l.locID, l.locName, l.locDescription, l.univID FROM Location l
-INNER JOIN Universe u ON u.universeID = l.univID
+SELECT locID, locName, locDescription, univID FROM Location
+INNER JOIN Universe u ON u.universeID = univID
 WHERE u.universeID = ?
 
 -- get characters for specific universe
-SELECT c.charID, c.firstName, c.lastName, c.description, c.univID FROM Characters c
-INNER JOIN Universe u ON u.universeID = c.univID
+SELECT charID, CONCAT(firstName, ' ', lastName) as charName, description, univID FROM Characters
+INNER JOIN Universe u ON u.universeID = univID
 WHERE u.universeID = ?
 
 -- get events for specific universe

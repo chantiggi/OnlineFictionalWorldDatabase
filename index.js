@@ -22,25 +22,6 @@ passport.use(new LocalStrategy(
     }
 ));
 
-/*
-app.configure(function() {
-    app.use('/static', express.static('public'));
-    app.use(express.cookieParser());
-    app.use(bodyParser.urlencoded({extended:true}));
-    app.use(session({secret: "malazan"}));
-
-    // Initialize Passport and Sessions
-    app.use(passport.initialize());
-    app.use(passport.session());
-
-    // Router
-    app.use(app.router);
-});
-*/
-
-//////////////////////////
-//Chantel's changes to above section based on changes 
-//between V3 and V4 of Express
 var env = process.env.NODE_ENV || 'development';
 if ('development' == env){
     app.use('/static', express.static('public'));
@@ -52,10 +33,8 @@ if ('development' == env){
     app.use(passport.initialize());
     app.use(passport.session());
 
-    // Router
     //app.use(app.router);
 };
-//////////////////////////
 
 // Set up handlebars view engine
 var handlebars = require('express-handlebars').create({ defaultLayout:'main'});
@@ -63,7 +42,6 @@ var handlebars = require('express-handlebars').create({ defaultLayout:'main'});
 // Set Handlebars Engine
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-
 
 // Serialize
 passport.serializeUser(function(user, done) {
@@ -85,6 +63,7 @@ app.use('/landing_page', require('./public/landing_page.js'));
 app.use('/login', require('./public/login.js'));
 app.use('/sign_up', require('./public/sign_up.js'));
 app.use('/dashboard', require('./public/dashboard.js'));
+app.use('/manageuniverse', require('./public/manageuniverse.js'));
 app.use('/logout', require('./public/logout.js'));
 
 // Web Pages
@@ -94,6 +73,10 @@ app.get('/', function(req, res) {
 
 app.get('/sign_up', function(req, res) {
     res.render('sign_up');
+});
+
+app.get('/manageuniverse/:univID', function(req, res) {
+    res.redirect('manageuniverse/' + req.params.univID);
 });
 
 app.post('/login', 
@@ -106,6 +89,10 @@ app.post('/login',
     //res.render('login');
     //}
 );
+
+app.get('/dashboard', function(req, res) {
+    res.render('dashboard');
+});
 
 app.get('/logout', passport.authenticate('local'), function(req, res) {
     req.logout();
@@ -140,6 +127,6 @@ app.use(function(err, req, res, next){
 
 // Listen
 app.listen(app.get('port'), function(){
-  console.log( 'Express started on http://flip#.engr.oregonstate.edu:' + 
+  console.log( 'Express started on http://localhost:' + 
     app.get('port') + '; press Ctrl-C to terminate.' );
 });
