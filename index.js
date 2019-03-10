@@ -116,11 +116,12 @@ app.post('/sign_up', function(req, res) {
     res.render('sign_up');
 });
 
+//*** */Note that this doesn't work unless the userID is manually typed in the URL - need to work on this! 
 app.get('/dashboard', passport.authenticate('local'), function(req, res) {
     // user data in req.user
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('dashboard/users/' + req.user.username);
+    res.redirect('dashboard/' + req.user.id);
     //res.render('dashboard');
 });
 

@@ -1,11 +1,11 @@
 <h3>Select a Universe</h3>
-<form id="selectUniv" action="/dashboard" method="get">
-    <select name="univ_id">
-        <option value="">All</option>
-    {{#each Universe}}
-        <option value="{{Name}}">{{Description}}</option>
-    {{/each}}
-    </select>
-    <br>
-    <input type="submit" value="Search">
-</form>
+
+{{#each universes}}
+<div class="card">
+    <h5 class="card-header">{{univName}}</h5>
+    <div class="card-body">
+        <p class="card-text">{{univDescription}}</p>
+        <a href="/manageuniverse/{{universeID}}" class="btn btn-primary">Select Universe</a>
+    </div>
+</div>
+{{/each}}
