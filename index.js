@@ -75,8 +75,6 @@ app.get('/sign_up', function(req, res) {
     res.render('sign_up');
 });
 
-//need to figure this out - currently reloading the page as
-//         /manageuniverse/manageuniverse/[univID]
 app.get('/manageuniverse/:univID', function(req, res) {
     res.redirect('manageuniverse/' + req.params.univID);
 });

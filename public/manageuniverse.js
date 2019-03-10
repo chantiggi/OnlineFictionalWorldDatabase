@@ -63,7 +63,7 @@ module.exports = function(){
         })
     }
 
-    router.get('/manageuniverse/:univID', function(req, res){
+    router.get('/:univID', function(req, res){
         var callbackCount = 0;
         var context = {};
         var mysql = req.app.get('mysql');
