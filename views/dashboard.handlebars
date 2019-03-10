@@ -1,0 +1,11 @@
+<h3>Select a Universe</h3>
+<form id="selectUniv" action="/dashboard" method="get">
+    <select name="univ_id">
+        <option value="">All</option>
+    {{#each Universe}}
+        <option value="{{Name}}">{{Description}}</option>
+    {{/each}}
+    </select>
+    <br>
+    <input type="submit" value="Search">
+</form>
