@@ -1,5 +1,8 @@
-<h3>Select a Universe</h3>
-
+<h3>Author Dashboard</h3>
+<h2>Welcome, {{author.fullName}}</h2>
+<a href="#" class="btn btn-primary">Create New Universe [dummy button for now]</a>
+<br><br>
+{{#if universes}}
 {{#each universes}}
 <div class="card">
     <h5 class="card-header">{{univName}}</h5>
@@ -9,3 +12,8 @@
     </div>
 </div>
 {{/each}}
+{{else}}
+<div>
+    <h5>You do not currently have any universes...</h5>
+</div>
+{{/if}}

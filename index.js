@@ -60,25 +60,24 @@ app.set('mysql', mysql);
 
 // Require Pages
 app.use('/landing_page', require('./public/landing_page.js'));
-app.use('/login', require('./public/login.js'));
 app.use('/sign_up', require('./public/sign_up.js'));
 app.use('/dashboard', require('./public/dashboard.js'));
 app.use('/manageuniverse', require('./public/manageuniverse.js'));
 app.use('/logout', require('./public/logout.js'));
 
 // Web Pages
+//landing page with log-in
 app.get('/', function(req, res) {
     res.render('landing_page');
 });
 
+//page to create new account
 app.get('/sign_up', function(req, res) {
     res.render('sign_up');
 });
 
-app.get('/manageuniverse/:univID', function(req, res) {
-    res.redirect('manageuniverse/' + req.params.univID);
-});
-
+//commented this out for now while we use a temporary workaround
+/*
 app.post('/login', 
     passport.authenticate('local', {
         successRedirect: '/dashboard',  // of user?
@@ -89,27 +88,27 @@ app.post('/login',
     //res.render('login');
     //}
 );
-
-app.get('/dashboard', function(req, res) {
-    res.render('dashboard');
-});
-
-app.get('/logout', passport.authenticate('local'), function(req, res) {
-    req.logout();
-    res.redirect('/landing_page');
-});
+*/
 
 app.post('/sign_up', function(req, res) {
     res.render('sign_up');
 });
 
-//*** */Note that this doesn't work unless the userID is manually typed in the URL - need to work on this! 
-app.get('/dashboard', passport.authenticate('local'), function(req, res) {
+app.get('/dashboard/:userID', passport.authenticate('local'), function(req, res) {
     // user data in req.user
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('dashboard/' + req.user.id);
+    res.redirect('dashboard/' + req.params.userID);
     //res.render('dashboard');
+});
+
+app.get('/manageuniverse/:univID', function(req, res) {
+    res.redirect('manageuniverse/' + req.params.univID);
+});
+
+app.get('/logout', passport.authenticate('local'), function(req, res) {
+    req.logout();
+    res.redirect('/');
 });
 
 // 404 catch-all handler (middleware)

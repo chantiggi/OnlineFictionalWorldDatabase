@@ -20,6 +20,7 @@
     <div id="collapseOne" class="collapse" aria-labelledby="Chapters" data-parent="#universeInfo">
       <div class="card-body">
         Here is a list of all the chapters for this Universe.
+        {{#if chapters}}
         <table>
             <thead>
                 <tr>
@@ -38,7 +39,11 @@
                 {{/each}}
             </tbody>
         </table>
-        
+        {{else}}
+        <h5>Currently no chapters for this universe.</h5>
+        {{/if}}
+        <br>
+        <a href="#" class="btn btn-primary">Add Chapter [dummy button for now]</a>
       </div>
     </div>
   </div>
@@ -55,6 +60,7 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="Events" data-parent="#universeInfo">
       <div class="card-body">
         Here is a list of all the events for this Universe.
+        {{#if events}}
         <table>
             <thead>
                 <tr>
@@ -71,6 +77,11 @@
                 {{/each}}
             </tbody>
         </table>
+        {{else}}
+        <h5>Currently no events for this universe.</h5>
+        {{/if}}
+        <br>
+        <a href="#" class="btn btn-primary">Create New Event [dummy button for now]</a>
       </div>
     </div>
   </div>
@@ -87,6 +98,7 @@
     <div id="collapseThree" class="collapse" aria-labelledby="Locations" data-parent="#universeInfo">
       <div class="card-body">
         Here is a list of all locations for this Universe.
+        {{#if locations}}
         <table>
             <thead>
                 <tr>
@@ -103,6 +115,11 @@
                 {{/each}}
             </tbody>
         </table>
+        {{else}}
+        <h5>Currently no locations for this universe.</h5>
+        {{/if}}
+        <br>
+        <a href="#" class="btn btn-primary">Create New Location [dummy button for now]</a>
       </div>
     </div>
   </div>
@@ -119,6 +136,7 @@
     <div id="collapseFour" class="collapse" aria-labelledby="Characters" data-parent="#universeInfo">
       <div class="card-body">
         Here is a list of all characters for this Universe.
+        {{#if characters}}
         <table>
             <thead>
                 <tr>
@@ -135,6 +153,11 @@
                 {{/each}}
             </tbody>
         </table>
+        {{else}}
+        <h5>Currently no characters for this universe.</h5>
+        {{/if}}
+        <br>
+        <a href="#" class="btn btn-primary">Create New Character [dummy button for now]</a>
       </div>
     </div>
   </div>

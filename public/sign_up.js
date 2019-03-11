@@ -17,7 +17,7 @@ module.exports = function(){
           res.end();
         }
         else{
-          res.redirect('/dashboard');
+          res.redirect('/dashboard/' + results.insertId);
         }
       })
     });
