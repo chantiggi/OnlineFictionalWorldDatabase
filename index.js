@@ -106,6 +106,14 @@ app.get('/manageuniverse/:univID', function(req, res) {
     res.redirect('manageuniverse/' + req.params.univID);
 });
 
+app.get('/manageuniverse/:univID/addChapter', function(req, res) {
+    res.render('manageuniverse/' + req.params.univID +'/addChapter');
+});
+
+app.get('/manageuniverse/:univID/addEvent', function(req, res) {
+    res.render('manageuniverse/' + req.params.univID +'/addEvent');
+});
+
 app.get('/logout', passport.authenticate('local'), function(req, res) {
     req.logout();
     res.redirect('/');

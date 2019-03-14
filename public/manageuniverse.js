@@ -78,6 +78,34 @@ module.exports = function(){
             }
         }
     })
+
+    router.post('/:univID/addChapter', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO Chapter (chapterNum, chapterTitle, chapterSummary) VALUES (?,?,?)";
+        var inserts = [req.body.chapterNum, req.body.chapterTitle, req.body.chapterSummary];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/manageuniverse');
+            }
+        });
+    });
+    
+    router.post('/:univID/addEvent', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO Event (eventName, eventDescription, eventTime, eventLocation) VALUES (?,?,?,?)";
+        var inserts = [req.body.eventName, req.body.eventDescription, req.body.eventTime, req.body.eventLocation];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/manageuniverse');
+            }
+        });
+    });
   
     return router;
 }();
