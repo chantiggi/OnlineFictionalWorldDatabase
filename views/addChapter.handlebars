@@ -1,0 +1,24 @@
+<!--Form to add new chapter to database-->
+<h1>Add New Chapter</h1>
+<h2>Universe: {{universe.univName}}</h2>
+
+<form action="/addChapter" method="post">
+    <div>
+        <label>Chapter Number:</label>
+        <input type="number" name="chapterNum" required />
+    </div>
+    <div>
+        <label>Chapter Title:</label>
+        <input type="text" name="chapterTitle" required />
+    </div>
+    <div>
+        <label>Chapter Summary:</label>
+        <input type="text" name="chapterSummary" required />
+    </div>
+    <div>
+        <input type="hidden" name="univID" value="{{universe.universeID}}">
+    </div>
+    <div>
+        <input type="submit" value="Add Chapter" />
+    </div>
+</form>
