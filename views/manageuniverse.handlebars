@@ -1,6 +1,7 @@
-<h1>Manage Universe page</h1>
+<!--Page to view all data for specific universe-->
+<h1>Manage Universe</h1>
+<h2>Universe: {{universe.univName}}</h2>
 
-<!--Only putting this here temporarily - will style later-->
 <style>
     table {border:1px solid black; border-collapse:collapse;}
     th {border:1px solid black; border-collapse:collapse;}
@@ -43,7 +44,7 @@
         <h5>Currently no chapters for this universe.</h5>
         {{/if}}
         <br>
-        <a href="#" class="btn btn-primary">Add Chapter [dummy button for now]</a>
+        <a href="/addChapter/{{universe.universeID}}" class="btn btn-primary">Add Chapter</a>
       </div>
     </div>
   </div>
@@ -81,7 +82,7 @@
         <h5>Currently no events for this universe.</h5>
         {{/if}}
         <br>
-        <a href="#" class="btn btn-primary">Create New Event [dummy button for now]</a>
+        <a href="/addEvent/{{universe.universeID}}" class="btn btn-primary">Create New Event</a>
       </div>
     </div>
   </div>
@@ -119,7 +120,7 @@
         <h5>Currently no locations for this universe.</h5>
         {{/if}}
         <br>
-        <a href="#" class="btn btn-primary">Create New Location [dummy button for now]</a>
+        <a href="/addLocation/{{universe.universeID}}" class="btn btn-primary">Create New Location</a>
       </div>
     </div>
   </div>
@@ -157,7 +158,7 @@
         <h5>Currently no characters for this universe.</h5>
         {{/if}}
         <br>
-        <a href="#" class="btn btn-primary">Create New Character [dummy button for now]</a>
+        <a href="/addCharacter/{{universe.universeID}}" class="btn btn-primary">Create New Character</a>
       </div>
     </div>
   </div>
