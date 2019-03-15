@@ -6,6 +6,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require("express-session");
 var app = express();
 
+//set the port number to be used
+var portNum = 31019;
+
 // Setup Local Strategy
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -55,7 +58,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Set Port
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || portNum);
 app.set('mysql', mysql);
 
 // Require Pages
@@ -63,6 +66,10 @@ app.use('/landing_page', require('./public/landing_page.js'));
 app.use('/sign_up', require('./public/sign_up.js'));
 app.use('/dashboard', require('./public/dashboard.js'));
 app.use('/manageuniverse', require('./public/manageuniverse.js'));
+app.use('/addChapter', require('./public/addChapter.js'));
+app.use('/addEvent', require('./public/addEvent.js'));
+app.use('/addLocation', require('./public/addLocation.js'));
+app.use('/addCharacter', require('./public/addCharacter.js'));
 app.use('/logout', require('./public/logout.js'));
 
 // Web Pages
@@ -106,6 +113,22 @@ app.get('/manageuniverse/:univID', function(req, res) {
     res.redirect('manageuniverse/' + req.params.univID);
 });
 
+app.get('/addChapter/:univID', function(req, res) {
+    res.redirect('addChapter/' + req.params.univID);
+});
+
+app.get('/addEvent/:univID', function(req, res) {
+    res.redirect('addEvent/' + req.params.univID);
+});
+
+app.get('/addLocation/:univID', function(req, res) {
+    res.redirect('addLocation/' + req.params.univID);
+});
+
+app.get('/addCharacter/:univID', function(req, res) {
+    res.redirect('addCharacter/' + req.params.univID);
+});
+
 app.get('/logout', passport.authenticate('local'), function(req, res) {
     req.logout();
     res.redirect('/');
@@ -126,6 +149,6 @@ app.use(function(err, req, res, next){
 
 // Listen
 app.listen(app.get('port'), function(){
-  console.log( 'Express started on http://localhost:' + 
+  console.log( 'Express started on http://flip1.engr.oregonstate.edu:' + 
     app.get('port') + '; press Ctrl-C to terminate.' );
 });

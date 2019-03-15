@@ -63,6 +63,21 @@ module.exports = function(){
         })
     }
 
+    function getUniverseInfo(req, res, mysql, context, complete) {
+        var inserts = [req.params.univID];
+        var query = "SELECT universeID, univName, univDescription FROM Universe "
+        + "WHERE universeID = ?";
+        mysql.pool.query(query, inserts, function (error, results, fields) {
+            if(error) {
+                console.log(error);
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.universe = results[0];
+            complete();
+        });
+    }
+
     router.get('/:univID', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -71,9 +86,10 @@ module.exports = function(){
         getEventsForUniv(req, res, mysql, context, complete);
         getLocationsforUniv(req, res, mysql, context, complete);
         getCharactersForUniv(req, res, mysql, context, complete);
+        getUniverseInfo(req, res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 4){
+            if(callbackCount >= 5){
                 res.render('manageuniverse', context);
             }
         }
