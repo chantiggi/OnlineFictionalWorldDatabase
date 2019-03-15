@@ -1,0 +1,28 @@
+<!--Form to add new event to database-->
+<h1>Add New Event</h1>
+<h2>Universe: {{universe.univName}}</h2>
+
+<form action="/addEvent" method="post">
+    <div>
+        <label>Event Name:</label>
+        <input type="text" name="eventName" required />
+    </div>
+    <div>
+        <label>Event Description:</label>
+        <input type="text" name="eventDescription" required />
+    </div>
+    <div>
+        <label>Event Location:</label>
+        <select name="eventLocation">
+        {{#each locations}}
+            <option value="{{locID}}">{{locName}}</option>
+        {{/each}}
+        </select>
+    </div>
+    <div>
+        <input type="hidden" name="univID" value="{{universe.universeID}}">
+    </div>
+    <div>
+        <input type="submit" value="Add Event" />
+    </div>
+</form>
