@@ -1,0 +1,24 @@
+<!--Form to add new character to database-->
+<h1>Add New Character</h1>
+<h2>Universe: {{universe.univName}}</h2>
+
+<form action="/addCharacter" method="post">
+    <div>
+        <label>First Name:</label>
+        <input type="text" name="firstname" required />
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" name="lastname" required />
+    </div>
+    <div>
+        <label>Description:</label>
+        <input type="text" name="description" required />
+    </div>
+    <div>
+        <input type="hidden" name="univID" value="{{universe.universeID}}">
+    </div>
+    <div>
+        <input type="submit" value="Add Character" />
+    </div>
+</form>
